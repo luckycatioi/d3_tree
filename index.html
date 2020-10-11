@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>师门树生成</title>
+    <style type="text/css">
+        @import url("css/main.css");
+    </style>
+
+    <style type="text/css">
+        @import url("css/tree_css.css");
+    </style>
+
+</head>
+
+<body>
+    <div class="div">
+        <div class="tree" id="tree"></div>
+        <div class="mydiv">
+            <textarea class="textinput" style="opacity: 0.5;border-style:none; " rows="40" cols="40" id="rk" name="rk">
+导师： 张三
+2016 级博士生： 天一、 王二、 吴五
+2015 级硕士生： 李四、 王五、 许六
+2016 级硕士生： 刘一、 李二、 李三
+2017 级本科生： 刘六、 琪七、 司四
+
+刘六： JAVA、 数学建模
+
+李二： 字节跳动、 京东云</textarea>
+            <div class="more"><a href="#" onclick=messege()>点击生成</a></div>
+        </div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/d3/3.4.8/d3.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="gen_tree.js"></script>
+    <script>
+        var All_child_node = 0
+        function messege() {
+            msg = $("#rk").val();
+            new_json = JSON.parse(get_json(msg))
+            update_json(new_json)
+            root = treeData[0];
+            root.x0 = height / 2;
+            root.y0 = 0;
+            update_heigh()
+            update(root)
+        }
+
+    </script>
+
+    <script type="text/javascript" src="data_process.js"></script>
+
+
+</body>
+
+</html>
